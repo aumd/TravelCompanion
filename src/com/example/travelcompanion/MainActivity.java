@@ -1,11 +1,13 @@
 package com.example.travelcompanion;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
 
+@SuppressLint("SetJavaScriptEnabled") @SuppressWarnings("unused")
 public class MainActivity extends Activity {
  
  WebView myBrowser;
@@ -27,9 +29,6 @@ public class MainActivity extends Activity {
 //	    }
 //	}
 
-
- 
- 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
