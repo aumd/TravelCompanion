@@ -1,34 +1,36 @@
-<!DOCTYPE html> 
-<html> 
+<!doctype html>
+<html>
 
-<head> 
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script src="js/bootstrap.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
-</head> 
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css">
+    
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.mobile-1.4.1.min.js"></script>
+	
+</head>
 
 <body>
 
-	<div class="container-fluid" >
-		<center>
-		<img src="img/Maps-Android-R.png" height="130px" width="275px">
-		<br><br>
-		<a href="simplemap.html" class="btn btn-large disabled">View Map</a>
-		<center>
-		</div>
-
-
-	<div class="container-fluid" >
-		<center>
-		<br><br>
-		<a href="Hotelview.html" class="btn btn-large disabled">View Reservation</a>
-		<center>
-		</div>
+<div data-role="page">
+	<div data-role="header">
+		<h1>Main Page</h1>
+	</div><!-- /header -->
+  
+	 
+    <div data-role="content">
+    	<a href="simplemap.html" data-role="button" data-icon="search" data-theme="b">Find Hotels</a>
+    	<a href="hotelview.html" data-role="button" data-icon="star" data-theme="d">View Reservation</a>
+   </div><!-- /content -->
+   
+   <br><br><br><br><br><br><br>
+ 
+        <div data-role="footer">
+            <h3>My Footer</h3>
+        </div><!-- /footer -->
+ 
+    </div><!-- /page -->
 </body>
-
 </html>
