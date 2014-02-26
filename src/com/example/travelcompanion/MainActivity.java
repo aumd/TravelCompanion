@@ -1,11 +1,13 @@
 package com.example.travelcompanion;
 
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
 
+@SuppressLint("SetJavaScriptEnabled") @SuppressWarnings("unused")
 public class MainActivity extends Activity {
  
  WebView myBrowser;
@@ -15,7 +17,6 @@ public class MainActivity extends Activity {
 // public void onAttachedToWindow() {
 //	 if(MyService.Flag == true){
 
-         // TODO Auto-generated method stub
  //        this.getWindow().setType(
  //                WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG
  //                        | WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -27,9 +28,6 @@ public class MainActivity extends Activity {
 //	    }
 //	}
 
-
- 
- 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
