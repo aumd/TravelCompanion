@@ -1,0 +1,20 @@
+<html>
+<title>
+
+
+</title>
+
+<body
+CREATE TABLE [Reservation](
+	[ReservationId] [int] IDENTITY(1,1) NOT NULL,
+	[RoomId] [int] NOT NULL,
+	[ReservationName] [nvarchar](100) NOT NULL,
+	[ReservationPaid] [int] NOT NULL,
+	[ReservationStatus] [int] NOT NULL,
+	[ReservationStart] [datetime] NOT NULL,
+	[ReservationEnd] [datetime] NOT NULL
+);
+
+</body>
+
+</html>
