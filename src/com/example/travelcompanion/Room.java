@@ -6,8 +6,6 @@ public class Room {
 	private String type;
 	private String name;
 	private int nights;
-	private boolean breakfast;
-	private int maxAdults, maxChildren, currentAdults, currentChildren;
 	private double[] rates = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };     // stores rates for every particular day 
 	private String[] days = { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };  // different days
 	private int num;   //number of rooms available
@@ -48,14 +46,6 @@ public class Room {
 		this.type = type;
 	}
 
-	public boolean isBreakfast() {
-		return breakfast;
-	}
-
-	public void setBreakfast(boolean breakfast) {
-		this.breakfast = breakfast;
-	}
-
 
 	public double[] getRates() {
 		return rates;
@@ -69,36 +59,6 @@ public class Room {
 		this.num = num;
 	}
 
-	public int getMaxChildren() {
-		return maxChildren;
-	}
-
-	public void setMaxChildren(int maxChildren) {
-		this.maxChildren = maxChildren;
-	}
-
-	public int getMaxAdults() {
-		return maxAdults;
-	}
-
-	public void setMaxAdults(int maxAdults) {
-		this.maxAdults = maxAdults;
-	}
-	public int getCurrentAdults() {
-		return currentAdults;
-	}
-
-	public void setCurrentAdults(int currentAdults) {
-		this.currentAdults = currentAdults;
-	}
-
-	public int getCurrentChildren() {
-		return currentChildren;
-	}
-
-	public void setCurrentChildren(int currentChildren) {
-		this.currentChildren = currentChildren;
-	}
 	public String getName() {
 		return name;
 	}

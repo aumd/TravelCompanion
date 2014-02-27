@@ -54,8 +54,6 @@ public class fileIO {
 				pw.print(",");
 				pw.print("1+0");  // always prints this never changes
 				pw.print(",");
-				pw.print(rooms.get(j).getMaxAdults() + "+" + rooms.get(j).getMaxChildren()); // print occupancy
-				pw.print(",");
 				
 				for(int k=0; k<rooms.get(j).getRates().length;k++) // go through the array of rates fot the current room and print to file
 				{

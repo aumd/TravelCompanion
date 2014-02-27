@@ -18,8 +18,6 @@ public class Reservation {
 	private Scanner input; // Used for taking user input //
 	private PrintWriter pw; // Used for writing to file //
 	private int resNum, rooms; // Res num and number of rooms //
-	private double totalCost; // Total cost of the reservation//
-	private double deposit; // Deposit (if any) //
 	private String name; // Name of the customer //
 	private com.example.travelcompanion.fileIO fileIO; // fileIO variable //
 	private String[][] hotelInfo;
@@ -68,32 +66,8 @@ public class Reservation {
 	 * on what you choose, you will be presented with 
 	 * one of three sets of questions
 	 */
-	public void login() 
-	{
-		System.out.println("Please choose the type of user (1) for Customer, (2) for DeskAdmin, (3) for Supervisor.");
+			
 
-		int choice = input.nextInt(); // Stores the choice of the above question//
-		
-		try {
-			switch (choice) // Like an 'if' statement, just takes the choice variable and depending on what you chose it will go to the case number// 
-			{
-			case 1:         // if you chose '1' then you will go down this path 
-				currentUser = new CurrentUser();
-				break;      // it will break out of the switch and go to the askQuestions call below
-
-
-			}
-		} catch (Exception e) {
-			System.err.println("O_o oooops Error");
-		}
-
-		/*
-		 * Ask a specific set of questions for the current user
-		 */
-		
-		currentUser.askQuestions(input, hotel, resInfo);
-		
-	}
 
 	
 	/*
@@ -107,7 +81,6 @@ public class Reservation {
 		hotelInfo = fileIO.gethotelInfo();
 		resInfo = fileIO.getResInfo();
 		assignInfo();                //call assign info method in this class//
-		login();                     //call login method in this class// 
 		
 	}
 	
@@ -163,8 +136,6 @@ public class Reservation {
 					occupancy = hotelInfo[j][4];         //set occupancy to the fifth comlumn
 					occArr = occupancy.split("\\+");     //assign occArr the 'split' of occupancy variable from the line before this one 
 					
-					room.setMaxAdults(Integer.parseInt(occArr[0]));       //set the max adults to the first item in occArr array
-					room.setMaxChildren(Integer.parseInt(occArr[1]));     //set the max children to the second item in occArr array
 					
 
 					for(int k =5 ; k < hotelInfo[ hotelInfo.length-1 ].length ; k++ ) //start at five because we want to start at the sixth column in the csv
@@ -196,21 +167,6 @@ public class Reservation {
 		this.rooms = rooms;
 	}
 
-	public double getTotalCost() {
-		return totalCost;
-	}
-
-	public void setTotalCost(double totalCost) {
-		this.totalCost = totalCost;
-	}
-
-	public double getDeposit() {
-		return deposit;
-	}
-
-	public void setDeposit(double deposit) {
-		this.deposit = deposit;
-	}
 
 	public String getName() {
 		return name;
