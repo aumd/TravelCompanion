@@ -9,46 +9,50 @@
 
 <body>
 
-
-<!-- Start of first page -->
 <div data-role="page" id="pageone">
+<div data-role="header">
+  <h1>Room Listing</h1>
+</div>
 
-	<div data-role="header">
-		<div data-role="navbar">
-			<ul>
-			<li><a href="" data-icon="home">Home</a></li>
-			<li><a href="#pagetwo" data-icon="search">Search Map</a></li>
-			</ul>
-		</div>
-	</div> <!-- HEADER -->
+<div data-role="main" class="ui-content">
+  <ul data-role="listview" data-inset="true">
+    <li>
+      <a href="#">
+      <img src="img/c.jpg">
+      <h2>Single Room</h2>
+      <p>info text here</p>
+      </a>
+      <a href="#reserve">Some Text</a>
+    </li>
+    <li>
+      <a href="#">
+      <img src="img/a.jpg">
+      <h2>Double Room</h2>
+      <p>info text here</p>
+      </a>
+      <a href="#reserve">Some Text</a>
+    </li>
+    <li>
+    <a href="#">
+    <img src="img/b.jpg">
+    <h2>Twin Room</h2>
+    <p>info text here</p>
+    </a>
+    <a href="#reserve">Some Text</a>
+  </li>
+  </ul>
+</div>
+</div> 
 
-	<div role="main" class="ui-content">
-		<p>I'm first in the source order so I'm shown as the page.</p>
-		<p>View internal page called <a href="#bar">bar</a></p>
-	</div><!-- /content -->
+<!-- pop up -->
 
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-<!-- Start of second page -->
-<div data-role="page" id="bar">
-
-	<div data-role="header">
-		<h1>Bar</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
-		<p><a href="#foo">Back to foo</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-</body>
+<div data-role="page" id="reserve" data-dialog="true">
+<div data-role="main" class="ui-content">
+<h3>Reserve this room?</h3>
+  <a href="#" class="ui-btn ui-btn-inline ui-btn-b ui-shadow ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini" data-rel="back">Reserve</a>
+  <a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-inline ui-mini" data-rel="back">Cancel</a>
+</div>
+</div> 
 
 </body>
 </html>
