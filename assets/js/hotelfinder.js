@@ -229,7 +229,7 @@ function showInfoWindow() {
 function buildIWContent(place) {
   document.getElementById('iw-icon').innerHTML = '<img class="hotelIcon" ' +
       'src="' + place.icon + '"/>';
-  document.getElementById('iw-url').innerHTML = '<b><a href="' + 'Hotelview.html' +
+  document.getElementById('iw-url').innerHTML = '<b><a href="' + 'Index.html' +
       '">' + place.name + '</a></b>';
   document.getElementById('iw-address').textContent = place.vicinity;
 

@@ -34,8 +34,8 @@ public class MainActivity extends Activity {
   setContentView(R.layout.activity_main);
   
   myBrowser = (WebView)findViewById(R.id.mybrowser);
-  myBrowser.loadUrl("file:///android_asset/Index.html");
-  //myBrowser.loadUrl("file:///android_asset/simplemap.html");
+  //myBrowser.loadUrl("file:///android_asset/Index.html");
+  myBrowser.loadUrl("file:///android_asset/simplemap.html");
   myBrowser.getSettings().setJavaScriptEnabled(true);
  }
 

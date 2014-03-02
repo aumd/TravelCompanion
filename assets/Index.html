@@ -1,36 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>My Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <link rel="stylesheet" href="css/jquery.mobile-1.4.1.min.css">
-    
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/jquery.mobile-1.4.1.min.js"></script>
-	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.css">
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.1/jquery.mobile-1.4.1.min.js"></script>
 </head>
 
 <body>
 
-<div data-role="page">
+
+<!-- Start of first page -->
+<div data-role="page" id="pageone">
+
 	<div data-role="header">
-		<h1>Main Page</h1>
+		<div data-role="navbar">
+			<ul>
+			<li><a href="" data-icon="home">Home</a></li>
+			<li><a href="#pagetwo" data-icon="search">Search Map</a></li>
+			</ul>
+		</div>
+	</div> <!-- HEADER -->
+
+	<div role="main" class="ui-content">
+		<p>I'm first in the source order so I'm shown as the page.</p>
+		<p>View internal page called <a href="#bar">bar</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<div data-role="page" id="bar">
+
+	<div data-role="header">
+		<h1>Bar</h1>
 	</div><!-- /header -->
-  
-	 
-    <div data-role="content">
-    	<a href="simplemap.html" data-role="button" data-icon="search" data-theme="b">Find Hotels</a>
-    	<a href="hotelview.html" data-role="button" data-icon="star" data-theme="d">View Reservation</a>
-   </div><!-- /content -->
-   
-   <br><br><br><br><br><br><br>
- 
-        <div data-role="footer">
-            <h3>My Footer</h3>
-        </div><!-- /footer -->
- 
-    </div><!-- /page -->
+
+	<div role="main" class="ui-content">
+		<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
+		<p><a href="#foo">Back to foo</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+</body>
+
 </body>
 </html>
