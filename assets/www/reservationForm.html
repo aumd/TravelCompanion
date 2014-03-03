@@ -11,25 +11,30 @@
 
 
 <body>
+ <p>
+  <a href="Hotelview.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Return</a>
+</p>
+
+
 <form>
     <ul data-role="listview" data-inset="true">
         <li data-role="fieldcontain">
-            <label for="name1">Name:</label>
+            <label for="name2">Name:</label>
             <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
         </li>
         
         <li data-role="fieldcontain">
-            <label for="name1">Address:</label>
+            <label for="name2">Address:</label>
             <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
         </li>
         
-        <li data-role="fieldcontain">
-            <label for="name1">Email Address:</label>
-            <input type="text" name="name1" id="name1" value="" data-clear-btn="true">
-        </li>
+       <li data-role="fieldcontain">
+     	 	<label for="email-1">Email: 	</label>
+    		<input type="email" data-clear-btn="false" name="email-1" id="email-1" value="">
+       </li>
        
         <li data-role="fieldcontain">
-            <label for="name1">Contact No.:</label>
+            <label for="name2">Contact No.:</label>
             <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
         </li>
        
@@ -46,8 +51,9 @@
         <li class="ui-body ui-body-b">
             <fieldset class="ui-grid-a">
                     <div class="ui-block-a"><button type="submit" data-theme="a">Cancel</button></div>
-                    <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button></div>
-            </fieldset>
+                    <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button> </div>
+                    
+                    
         </li>
     </ul>
 </form>
