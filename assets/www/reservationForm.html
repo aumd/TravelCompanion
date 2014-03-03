@@ -7,39 +7,72 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+	<!-- from aleli -->
+	<script type="text/javascript" src="js/functions.js"></script>
 </head>
 
-
 <body>
- <p>
-  <a href="Hotelview.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Return</a>
-</p>
+
+<!-- header yo -->
+		<div data-role="header">
+			<a href="Index.html" data-role="button" data-icon="home" onclick="doSomething(); return false" rel="external">Home</a>
+			<h1>Reservation Info</h1>
+			<a href="reservationForm.html" onclick="doSomething(); return false" rel="external">Refresh</a>
+		</div>
 
 
-<form>
+<form id="frmCadastre">
     <ul data-role="listview" data-inset="true">
+	
+	<!-- from aleli-->
+	
+		<li>
+				<label for="txtRoomNo" class="select">RoomNo:</label>
+				<select name="txtRoomNo" id="txtRoomNo"/>
+					<option value="R1:Single Bedroom">R1 Single</option>
+                			<option value="R2:Single Bedroom">R2 Single</option>
+                			<option value="R3:Double Bedroom">R3 Double</option>
+                			<option value="R4:Double Bedroom">R4 Double</option>
+					<option value="R5:Double Bedroom">R5 Double</option>
+                			<option value="R6:Double Bedroom">R6 Double</option>
+                			<option value="R7:Family Size Bedroom">R7 Family</option>
+           			 </select>
+			</li>
+			<li>
+  				<label for="txtReserveTime" class="select">ReserveTime:</label>
+           			 <select name="txtReserveTime" id="txtReserveTime">
+                			<option value="standard">4 Hours</option>
+                			<option value="rush">8 Hours</option>
+                			<option value="express">12 Hours</option>
+                			<option value="overnight">24 Hours</option>
+           			 </select>
+			</li>
+			
+	
+	<!-- end -->
         <li data-role="fieldcontain">
-            <label for="fname">Full Name:</label>
-            <input type="text" name="fname" id="fname" value="" maxlength="50" data-clear-btn="true">
+            <label for="txtName">Full Name:</label>
+            <input type="text" name="fname" id="txtName" value="" maxlength="50" data-clear-btn="true">
         </li>
         
-        <li data-role="fieldcontain">
+        <!-- <li data-role="fieldcontain">
             <label for="address">Address:</label>
             <input type="text" name="address" id="address" value="" maxlength="75" data-clear-btn="true">
-        </li>
+        </li> -->
         
        <li data-role="fieldcontain">
-     	 	<label for="email-1">Email: </label>
-    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="email-1" value="">
+     	 	<label for="txtEmail">Email: </label>
+    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="txtEmail" value="">
        </li>
        
          <li data-role="fieldcontain">
-            <label for="contact">Contact No.:</label>
-            <input type="text" name="contact" id="contact" value="" maxlength="15" data-clear-btn="true">
+            <label for="txtContact">Contact No.:</label>
+            <input type="text" name="contact" id="txtContact" value="" maxlength="15" data-clear-btn="true">
         </li>
        
         
-        <li data-role="fieldcontain">
+        <!-- <li data-role="fieldcontain">
             <label for="select-choice-1" class="select">Reserve for the next:</label>
             <select name="select-choice-1" id="select-choice-1">
                 <option value="standard">4 Hours</option>
@@ -47,15 +80,21 @@
                 <option value="express">12 Hours</option>
                 <option value="overnight">24 Hours</option>
             </select>
-        </li>
+        </li> -->
+		
         <li class="ui-body ui-body-b">
             <fieldset class="ui-grid-a">
-                    <div class="ui-block-a"><button type="submit" data-theme="a">Cancel</button></div>
-                    <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button> </div>
-                    
-                    
+					 <div class="ui-block-a"><a href="Hotelview.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back</a></div>
+                    <div class="ui-block-b"><input type="submit" value="Reserve" id="btnSave"/></div>
+					
         </li>
     </ul>
-</form>
+</form
+
+<!-- for client saved client-->
+
+	<table id="tblList">
+
+	</table>
 </body>
 </html>
