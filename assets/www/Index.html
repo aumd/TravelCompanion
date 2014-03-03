@@ -5,30 +5,53 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script src="js/bootstrap.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+<!-- bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script> 
+
+<!-- jquery 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script> -->
+
 
 </head> 
 
 <body>
+	<!-- top navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
 
-	<div class="container-fluid" >
-		<center>
-		<img src="img/Maps-Android-R.png" height="130px" width="275px">
-		<br><br>
-		<a href="simplemap.html" class="btn btn-large disabled">View Map</a>
-		<center>
+        <div class="navbar-inner">
+            <div class="container">
+
+                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a href="#" class="brand">Travel Companion</a>
+            </div>
+        </div>
+	</div>
+
+		<!-- <div data-role="header"> 
+			<h1>Main Page</h1> 
+		</div> -->
+		
+		<!-- <div>
+		<a href="simplemap.html" data-role="button" data-icon="search">Search Map</a>
+		<a href="hotelview.html" data-role="button" data-icon="plus">Reservation</a>
+		</div> -->
+		
+		<div>
+		<button class="btn btn-large btn-block" type="button"><a href="simplemap.html">View Map</a></button>
+		<button class="btn btn-large btn-block" type="button"><a href="Hotelview.html">Reservation</a></button>
 		</div>
-
-
-	<div class="container-fluid" >
-		<center>
-		<br><br>
-		<a href="Hotelview.html" class="btn btn-large disabled">View Reservation</a>
-		<center>
-		</div>
+	
+	
 </body>
 
 </html>
