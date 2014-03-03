@@ -1,42 +1,55 @@
+<!DOCTYPE html> 
+<html> 
 
-<form action="/html/tags/html_form_tag_action.cfm" method="get">
-<fieldset>
-<legend>Your Details</legend>
-<div>
-<label for="first_name">First Name:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br><form name="htmlform" method="post" action="html_form_send.html">
-<table width="450px">
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+</head>
 
-<label for="first_name">Middle Name:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br><form name="htmlform" method="post" action="html_form_send.html">
-<table width="450px">
 
-<label for="first_name">Last Name:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br><form name="htmlform" method="post" action="html_form_send.html">
-<table width="450px">
-
-<label for="first_name">Email Address:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br><form name="htmlform" method="post" action="html_form_send.html">
-<table width="450px">
-
-<label for="first_name">Cellphone No.:</label><br>
-<input type="text" name="first_name" value="" maxlength="100" /><br><form name="htmlform" method="post" action="html_form_send.html">
-<table width="450px"> 
-
-</table>
+<body>
+<form>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="fieldcontain">
+            <label for="name1">Name:</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
+        </li>
+        
+        <li data-role="fieldcontain">
+            <label for="name1">Address:</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
+        </li>
+        
+        <li data-role="fieldcontain">
+            <label for="name1">Email Address:</label>
+            <input type="text" name="name1" id="name1" value="" data-clear-btn="true">
+        </li>
+       
+        <li data-role="fieldcontain">
+            <label for="name1">Contact No.:</label>
+            <input type="text" name="name2" id="name2" value="" data-clear-btn="true">
+        </li>
+       
+        
+        <li data-role="fieldcontain">
+            <label for="select-choice-1" class="select">Reserve for the next:</label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="standard">4 Hours</option>
+                <option value="rush">8 Hours</option>
+                <option value="express">12 Hours</option>
+                <option value="overnight">24 Hours</option>
+            </select>
+        </li>
+        <li class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a">
+                    <div class="ui-block-a"><button type="submit" data-theme="a">Cancel</button></div>
+                    <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button></div>
+            </fieldset>
+        </li>
+    </ul>
 </form>
-</div>
-<div>
-<label for="reserve">Reserve for the next:</label><br>
-<input type="radio" name="reserve" value="2hrs" /> 4Hrs
-<input type="radio" name="reserve" value="4hrs" /> 8Hrs
-<input type="radio" name="reserve" value="4hrs" /> 12Hrs
-</div>
-<div>
- 
-</tr>
-<tr>
- <td colspan="1" style="text-align:left">
-  <input type="submit" value="Submit"d> 
-</fieldset>
-</form>
+</body>
+</html>
