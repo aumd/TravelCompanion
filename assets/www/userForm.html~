@@ -7,7 +7,7 @@
 </head>
 <body>
 <p>
-  <a href="userForm.html" onclick="doSomething(); return false" rel="external">Refresh</a>
+  <a href="UserForm.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Refresh</a>
 </p>
 	<form id="frmCadastre">
 		<ul>
