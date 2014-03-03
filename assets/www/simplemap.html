@@ -7,10 +7,10 @@
     <meta charset="utf-8">
 	
 	<!-- bootstrap -->
-<link rel="stylesheet" href="css/bootstrap.css" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script src="js/bootstrap.js"></script>
-<script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<script src="js/bootstrap.js"></script>
+	<script src="js/bootstrap.min.js"></script>
     
     <!-- JQUERY 
     
@@ -22,7 +22,7 @@
     <style>
       html, body, #map-canvas {
         height: 100%;
-      	width: 100%
+      	width: 100%;
         margin: 0px;
         padding: 0px
       }
@@ -32,6 +32,7 @@
       table {
         font-size: 12px;
       }
+
       #map-canvas {
         width: 480px;
       }
@@ -77,16 +78,23 @@
   </head>
 
   <body style="margin:0px; padding:0px;" onload="initialize()">
+  
+	<!-- top navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+            <div class="container" style="width:480px">
+                <a href="Index.html" class="brand">Travel Companion</a>
+            </div>
+		</div>
+	</div>
 
     <!-- <div id="findhotels">
      	<center>FIND HOTELS</center>
     </div> -->
-
-    <div id="locationField">
-      <input id="autocomplete" placeholder="Enter a city" type="text" />
-    </div>
-
-    <div id="controls">
+	
+    <input id="autocomplete" placeholder="Enter a city" type="text" />
+   
     <select id="country">
       <option value="all">All</option>
       <option value="au">Australia</option>
@@ -104,7 +112,6 @@
       <option value="us">U.S.A.</option>
       <option value="uk">United Kingdom</option>
     </select>
-  </div>
 
     <div id="map-canvas" style="width:100%;height:800px"></div>
 
