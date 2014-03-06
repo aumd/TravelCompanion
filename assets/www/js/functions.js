@@ -20,28 +20,30 @@ $(function(){
 		});
 		tbClients.push(client);
 		localStorage.setItem("tbClients", JSON.stringify(tbClients));
-		alert("The data was saved.");
+		alert("Reservation added!");
 		return true;
 	}
-
+	
 	function Edit(){
 		tbClients[selected_index] = JSON.stringify({
-				RoomNo    : $("#txtRoomNo").val(),
+				RoomNo   : $("#txtRoomNo").val(),
 				ReserveTime   : $("#txtReserveTime").val(),
 				Name  : $("#txtName").val(),
 				Phone : $("#txtContact").val(),
 				Email : $("#txtEmail").val()
 			});//Alter the selected item on the table
 		localStorage.setItem("tbClients", JSON.stringify(tbClients));
-		alert("The data was edited.")
+		alert("Reservation updated!")
 		operation = "A"; //Return to default value
 		return true;
 	}
 
 	function Delete(){
-		tbClients.splice(selected_index, 1);
-		localStorage.setItem("tbClients", JSON.stringify(tbClients));
-		alert("Client deleted.");
+		if(confirm("Are you sure you want to delete reservation?")){
+			tbClients.splice(selected_index, 1);
+			localStorage.setItem("tbClients", JSON.stringify(tbClients));
+			alert("Deleted reservation!");
+		}
 	}
 
 	function List(){		
@@ -53,7 +55,6 @@ $(function(){
 			"	<th>Rooms</th>"+
 			"	<th>ReserveTime</th>"+
 			"	<th>Name</th>"+
-			"	<th>Contact No.</th>"+
 			"	<th>Email</th>"+
 			"	</tr>"+
 			"</thead>"+
@@ -63,11 +64,10 @@ $(function(){
 		for(var i in tbClients){
 			var cli = JSON.parse(tbClients[i]);
 		  	$("#tblList tbody").append("<tr>"+
-									 	 "	<td><img src='edit.png' alt='Edit"+i+"' class='btnEdit'/><img src= 'delete.png' alt='Delete"+i+"' class='btnDelete'/></td>" + 
+									 	 "	<td><img src= 'img/edit.png' alt='Edit"+i+"' class='btnEdit'/><img src= 'img/delete.png' alt='Delete"+i+"' class='btnDelete'/></td>" + 
 										 "	<td>"+cli.RoomNo+"</td>" + 
 										"	<td>"+cli.ReserveTime+"</td>" + 
 										 "	<td>"+cli.Name+"</td>" + 
-										 "	<td>"+cli.Contact+"</td>" + 
 										 "	<td>"+cli.Email+"</td>" + 
 		  								 "</tr>");
 		}
