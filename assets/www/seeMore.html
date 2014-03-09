@@ -29,12 +29,24 @@
 	<!-- hidden inline form -->
 		<div id="inline">
 		<h2>Send us your feedback <img src="img/feedback.gif"/></h2>
-		<form id="contact" action="#" method="post" name="contact"><label for="email">Your E-mail</label>
+		<div id="notation">
+		<form>
+		<label for="select-choice-0" class="select"><h3>User rating</h3></label>
+		<select name="note_utilisateur" id="note_utilisateur" data-native-menu="false" data-theme="c" >
+		   <option value="one" class="one"> Not good at all </option>
+		   <option value="two" class="two">Average </option>
+		   <option value="three" class="three">Pretty good </option>
+		   <option value="four" class="four"> Excellent </option>
+		</select>
+	</form>
+	</div>
+		<form id="contact" action="#" method="post" name="contact"><label for="email"><h3>Your E-mail</h3></label>
 			<input id="email" class="txt" type="email" name="email" />
-			<label for="msg">Your Comments</label>
+			<label for="msg"><h3>Your Comments</h3></label>
 			<textarea id="msg" class="txtarea" name="msg"></textarea>
 
 			<button id="send">Send E-mail</button></form></div>    
 		</div>
+		
 </body>
 </html>
