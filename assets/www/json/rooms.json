@@ -1,29 +1,40 @@
 {
-rooms_types: [
-            -
-                {
-                -
-                rooms_type: {
-                    name: "Single Bedroom"
-					rate: "250 php"
-                    id: 1
-                }
-            -
-            {
-                -
-                rooms_type: {
-                    name: "Double Bedroom"
-                    rate: "350 php"
-					id: 2
-                }
-			_
-				{
-                -
-                rooms_type: {
-                    name: "Twin Room"
-					rate: "250 php"
-                    id: 3
-                }
-            }
-        ]
+    "rooms": [
+        {
+            "id": "R1",
+            "roomType": "Single",
+            "rent": "250php",
+            "status": "Available"
+        },
+        {
+            "id": "R2",
+            "roomType": "Single",
+            "rent": "250php",
+            "status": "Available"
+        },
+        {
+            "id": "R3",
+            "roomType": "Double",
+            "rent": "350php",
+            "status": "Available"
+        },
+        {
+            "id": "R4",
+            "roomType": "Double",
+            "rent": "350php",
+            "status": "Available"
+        },
+        {
+            "id": "R5",
+            "roomType": "Twin",
+            "rent": "450php",
+            "status": "Available"
+        },
+        {
+            "id": "R6",
+            "roomType": "Twin",
+            "rent": "450php",
+            "status": "Available"
+        }
+    ]
 }

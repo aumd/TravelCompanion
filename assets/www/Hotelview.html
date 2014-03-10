@@ -8,19 +8,130 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+	<script>
+	//assuming this comes from an ajax call
+var info = [
+        {
+			"img": "img/c.jpg",
+            "id": "R1",
+            "roomType": "Single",
+            "rent": "250php",
+            "status": "Available"
+        },
+        {
+			"img": "img/c.jpg",
+            "id": "R2",
+            "roomType": "Single",
+            "rent": "250php",
+            "status": "Available"
+        },
+        {
+			"img": "img/a.jpg",
+            "id": "R3",
+            "roomType": "Double",
+            "rent": "350php",
+            "status": "Available"
+        },
+        {
+			"img": "img/a.jpg",
+            "id": "R4",
+            "roomType": "Double",
+            "rent": "350php",
+            "status": "Available"
+        },
+        {
+			"img": "img/b.jpg",
+            "id": "R5",
+            "roomType": "Twin",
+            "rent": "450php",
+            "status": "Available"
+        },
+        {
+			"img": "img/b.jpg",
+            "id": "R6",
+            "roomType": "Twin",
+            "rent": "450php",
+            "status": "Available"
+        }
+    ];
+
+//pageinit event for first page
+//triggers only once
+//write all your on-load functions and event handlers pertaining to page1
+$(document).on("pageinit", "#info-page", function () {
+
+
+    //set up string for adding <li/>
+    var li = "";
+    //container for $li to be added
+    $.each(info, function (i, roomType) {
+        //add the <li> to "li" variable
+        //note the use of += in the variable
+        //meaning I'm adding to the existing data. not replacing it.
+        //store index value in array as id of the <a> tag
+        li += '<li><a href="#" id="' + i + '" class="info-go">' + roomType.roomType + '</a></li>';
+    });
+    //append list to ul
+    $("#room-list").append(li).promise().done(function () {
+        //wait for append to finish - thats why you use a promise()
+        //done() will run after append is done
+        //add the click event for the redirection to happen to #details-page
+        $(this).on("click", ".info-go", function (e) {
+            e.preventDefault();
+            //store the information in the next page's data
+            $("#details-page").data("info", info[this.id]);
+            //change the page # to second page. 
+            //Now the URL in the address bar will read index.html#details-page
+            //where #details-page is the "id" of the second page
+            //we're gonna redirect to that now using changePage() method
+            $.mobile.changePage("#details-page");
+        });
+
+        //refresh list to enhance its styling.
+        $(this).listview("refresh");
+    });
+});
+
+//use pagebeforeshow
+//DONT USE PAGEINIT! 
+//the reason is you want this to happen every single time
+//pageinit will happen only once
+$(document).on("pagebeforeshow", "#details-page", function () {
+    //get from data - you put this here when the "a" wa clicked in the previous page
+    var info = $(this).data("info");
+    //string to put HTML in
+    var info_view = "";
+    //use for..in to iterate through object
+    for (var key in info) {
+        //Im using grid layout here.
+        //use any kind of layout you want.
+        //key is the key of the property in the object 
+        //if obj = {name: 'k'}
+        //key = name, value = k
+        info_view += '<div class="ui-grid-a"><div class="ui-block-a"><div class="ui-bar field" style="font-weight : bold; text-align: left;">' + key + '</div></div><div class="ui-block-b"><div class="ui-bar value" style="width : 75%">' + info[key] + '</div></div></div>';
+    }
+    //add this to html
+    $(this).find("[data-role=content]").html(info_view);
+});
+	</script>
+	
+
 </head>
 	<body>
  
 
-	<div data-role="page">
+	<!--first page -->
+	<div data-role="page" id="info-page">
 	
-		<div data-role="header">
+    <div data-role="header">
 		<a href="Index.html" data-role="button" data-icon="home" onclick="doSomething(); return false" rel="external">Home</a>
 		<h1>Room Listing</h1>
 		<a href="simplemap.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back to Map</a>
-		</div>
-        
+	</div>
+	
 	<div data-role="content">
+<<<<<<< HEAD
         <ul data-role="listview" data-filter="true" data-filter-placeholder="Search Rooms..." data-inset="true">
      
        <li><a href="#">
@@ -104,6 +215,31 @@
                    <a href="RoomInfo.html" rel="external"></a>
             </a></li>  
   </div><!-- /container -->
+=======
+        <ul data-role="listview" id="room-list" data-filter="true" data-filter-placeholder="Search Rooms..." data-inset="true">
+            <li data-role="list-divider" role="heading"></li>
+        </ul>
+    </div>
+	</div><!--end of page one-->
+	
+<!--second page -->
+	<div data-role="page" id="details-page">
+    
+	<div data-role="header">
+			<a href="Index.html" data-role="button" data-icon="home" onclick="doSomething(); return false" rel="external">Home</a>
+			<h1>Reservation Info</h1>
+			<a href="Hotelview.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back to List</a>
+	</div>
+	
+    <div data-role="content">
+		<ul>
+		</ul>
+	</div>
+	
+	<div><button id="btnSave" type="submit">Reserve</button></div>
+
+	</div><!--end of page two-->
+>>>>>>> 94bcddca266f07856d9c90d3a63933a74909d0a9
 </body>
 </html>
 
