@@ -10,6 +10,13 @@
 	
 	<!-- from aleli -->
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('a').click(function(){
+				$(this).hide();
+			});
+		});
+		 </script		
 </head>
 
 <body>
@@ -26,12 +33,10 @@
 		
 <form id="frmCadastre">
     <ul data-role="listview" data-inset="true">
-	
-	<!-- from aleli-->
-	
+	<form action="MyReservation.html" method="post">
 		<li>
 				<label for="txtRoomNo" class="select">RoomNo:</label>
-				<select name="txtRoomNo" id="txtRoomNo"/>
+				<select name="roomno" id="txtRoomNo"/>
 					<option value="R1:Single Bedroom">R1 Single</option>
                 			<option value="R2:Single Bedroom">R2 Single</option>
                 			<option value="R3:Double Bedroom">R3 Double</option>
@@ -43,8 +48,8 @@
 			</li>
 			
 			<li>
-  				<label for="txtReserveTime" class="select">ReserveTime:</label>
-           			 <select name="txtReserveTime" id="txtReserveTime">
+  				<label for="reservetime" class="select">ReserveTime:</label>
+           			 <select name="ReserveTime" id="txtReserveTime">
                 			<option value="8 Hours">8 Hours</option>
 							<option value="12 Hours">12 Hours</option>
 							<option value="24 Hours">24 Hours</option>
@@ -54,8 +59,13 @@
 	
 	<!-- end -->
         <li data-role="fieldcontain">
-            <label for="txtName">Full Name:</label>
-            <input type="text" name="fname" id="txtName" value="" maxlength="50" data-clear-btn="true">
+            <label for="txtName">Last Name:</label>
+            <input type="text" name="last" id="txtName" value="" maxlength="50" data-clear-btn="true">
+        </li>
+        
+        <li data-role="fieldcontain">
+            <label for="txtName">First Name:</label>
+            <input type="text" name="first " id="txtName" value="" maxlength="50" data-clear-btn="true">
         </li>
         
         <!-- <li data-role="fieldcontain">
