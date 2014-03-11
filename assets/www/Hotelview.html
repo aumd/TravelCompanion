@@ -115,8 +115,44 @@ $(document).on("pagebeforeshow", "#details-page", function () {
     $(this).find("[data-role=content]").html(info_view);
 });
 	</script>
+</head>
+	<body>
+	<!--first page -->
+ 	<div data-role="page" id="info-page">
+ 	
+ 	<div data-role="header">
+	<a href="Index.html" data-role="button" data-icon="home" onclick="doSomething(); return false" rel="external">Home</a>
+  		<h1>Room Listing</h1>
+  		<a href="simplemap.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back to Map</a>
+ 		
+</div>
+	<div data-role="content">
+	<ul data-role="listview" id="room-list" data-filter="true" data-filter-placeholder="Search Rooms..." data-inset="true">
+             <li data-role="list-divider" role="heading"></li>
+         </ul>
+     </div>
+ 	</div><!--end of page one-->
+ 	
+ <!--second page -->
+ 	<div data-role="page" id="details-page">
+     
+ 	<div data-role="header">
+ 			<a href="Index.html" data-role="button" data-icon="home" onclick="doSomething(); return false" rel="external">Home</a>
+ 			<h1>Reservation Info</h1>
+ 			<a href="Hotelview.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back to List</a>
+ 	</div>
+ 	
+     <div data-role="content">
+ 		<ul>
+ 		</ul>
+ 	</div>
+ 	
+ 	
+ 	<div><button id="btnSave" type="submit">Reserve</button></div>
+  </div><!--end of page two-->
 	
-
+	
+	
 	
 </html>
 
