@@ -12,22 +12,6 @@ public class MainActivity extends Activity {
  
  WebView myBrowser;
 
- // Comment sa ni for now. Para ni sa home button unta.
- //@Override
-// public void onAttachedToWindow() {
-//	 if(MyService.Flag == true){
-
- //        this.getWindow().setType(
- //                WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG
- //                        | WindowManager.LayoutParams.FLAG_FULLSCREEN);
- //        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
-
- //    super.onAttachedToWindow();
-//	    }else{
-//	        finish();
-//	    }
-//	}
-
  @Override
  protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
