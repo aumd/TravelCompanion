@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Companion</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	
+  </head>
+
+  <body background="img/green_cup.png">
+  
+  
+  <!-- top navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="navbar-inner">
+               <a href="Index.html" class="brand"><img src="img/ic_launcher-web.png" style="width:25px" "height:25px" alt="icon" />Travel Companion</a>
+		</div>
+	</div>
+
+    <div class="container">
+
+      <div id="this-carousel-id" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="item active">
+            <a href="Map.html">  <img src="img/hotel.jpg" alt="Hotel" />
+            </a>
+            <div class="carousel-caption">
+              <p>Locate Hotels</p>
+              <p><a href="Map.html">See Map &raquo;</a></p>
+            </div>
+          </div>
+       
+          <div class="item">
+            <a href="MyReservation.html">
+              <img src="img/reserve.jpg" alt="Reserve" />
+            </a>
+            <div class="carousel-caption">
+              <p>My Reservation</p>
+              <p><a href="MyReservation.html">See Reservation &raquo;</a></p>
+            </div>
+          </div>
+		  
+          <div class="item">
+            <a href="seeMore.html">
+              <img src="img/enjoy.jpg" alt="etc" />
+            </a>
+            <div class="carousel-caption">
+              <p>Enjoy!</p>
+              <p><a href="seeMore.html">more &raquo;</a></p>
+            </div>
+          </div>
+        </div>
+		
+          <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+      </div><!-- .carousel -->
+   
+	 <center>
+	 
+	  	<button class="btn btn-large btn-block" type="button"><a href="Map.html">View Map</a></button>
+		<button class="btn btn-large btn-block" type="button"><a href="MyReservation.html">My Reservation</a></button>
+	</center>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript -->
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+    <!-- Bootstrap jQuery plugins compiled and minified -->
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.carousel').carousel({
+          interval: 3000
+        });
+      });
+    </script>
+
+  </body>
+</html>
