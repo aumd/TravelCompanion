@@ -10,6 +10,7 @@
     <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
 	<script src="js/fastclick.js"></script>
+	<script src="js/model.js"></script>
 	
 </head>
   <body>
@@ -20,19 +21,19 @@
 		<a href="RoomList.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back</a>
 		</div>
 
-    <div class="container">
-	<form id="frmCadastre">
+      <div class="container">
+	<form>
 	<ul data-role="listview" data-inset="true">
 	
 			<li><center><img src="img/rooms/04.jpg" height="200px" width="200px"></center></li>
 			<li>
-				<label for="txtRoomNo" class="select">Room Number</label>
-				<input name="roomnumber" id="roomnumber" placeholder="" value="04" type="text" readOnly="true"/>
+				<label for="roomNo" class="select">Room Number</label>
+				<input name="RoomNo" id="roomNo" placeholder="" value="04" type="text" readOnly="true"/>
 			</li>
 
 			<li>
-  				<label for="reservetime" class="select">ReserveTime:</label>
-           			 <select name="ReserveTime" id="txtReserveTime">
+  				<label for="reserveTime" class="select">ReserveTime:</label>
+           			 <select name="ReserveTime" id="reserveTime">
                 			<option value="8 Hours">8 Hours</option>
 							<option value="12 Hours">12 Hours</option>
 							<option value="24 Hours">24 Hours</option>
@@ -41,28 +42,29 @@
 
 	<!-- end -->
         <li data-role="fieldcontain">
-            <label for="txtName">Full Name:</label>
-            <input type="text" name="fname" id="txtName" value="" maxlength="50" data-clear-btn="true"required/>
+            <label for="name">Full Name:</label>
+            <input type="text" name="fname" id="name" value="" maxlength="50" data-clear-btn="true" required/>
         </li>
         
         <!-- <li data-role="fieldcontain">
             <label for="address">Address:</label>
             <input type="text" name="address" id="address" value="" maxlength="75" data-clear-btn="true"required/>
         </li> -->
-        
+
+        <li data-role="fieldcontain">
+            <label for="phone">Contact No:</label>
+            <input type="text" name="contact" id="phone" value="" maxlength="15" data-clear-btn="true" pattern="[0-9]*" required/>
+        </li>
+		
        <li data-role="fieldcontain">
-     	 	<label for="txtEmail">Email: </label>
-    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="txtEmail" value=""required/>
+     	 	<label for="email">Email: </label>
+    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="email" value="" required/>
        </li>
        
-         <li data-role="fieldcontain">
-            <label for="txtContact">Contact No:</label>
-            <input type="text" name="contact" id="txtContact" value="" maxlength="15" data-clear-btn="true" pattern="[0-9]*" required/>
-        </li>
-  
-
-         <div class="ui-block-a"><center><input type="submit" value="Add" id="btnSave"/><a href="#pagetwo"></center></div>
-     
+       
+			<div>
+			<button type="button" onClick="insertRecord()">Add</button>
+			</div>
     </ul>
 </form>
 	

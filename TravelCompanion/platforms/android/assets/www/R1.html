@@ -13,111 +13,229 @@
 	
 	<!-- CRUD -->
 	<script>
+	var db;
+	var dataset;
+
+	function initDatabase() {
+    console.debug('called initDatabase()');
+
+    try {
+        if (!window.openDatabase) {
+            alert('not supported');
+        } else {
+            var shortName = 'HotelDatabase';
+            var version = '1.0';
+            var displayName = 'My Test Database Example';
+            var maxSizeInBytes = 65536;
+            db = openDatabase(shortName, version, displayName, maxSizeInBytes);
+
+            createTableIfNotExists();
+        }
+    } catch(e) {
+        if (e == 2) {
+            alert('Invalid database version');
+        } else {
+            alert('Unknown error ' + e);
+        }
+        return;
+    }
+	}
+
+	function createTableIfNotExists() {
+    console.debug('called createTableIfNotExists()');
+
+    var sql = "CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, roomNo TEXT, reserveTime TEXT, name TEXT, phone TEXT, email TEXT)";
+
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [], showRecords, handleErrors);
+            console.debug('executeSql: ' + sql);
+        }
+    );
+	}
+
+	function insertRecord() {
+    console.debug('called insertRecord()');
 	
-	$(function(){
-	var operation = "A"; //"A"=Adding; "E"=Editing
+	var roomNo = $('#roomNo').val();
+	var reserveTime = $('#reserveTime').val();
+    var name = $('#name').val();
+    var phone = $('#phone').val();
+	var email = $('#email').val();
 
-	var selected_index = -1; //Index of the selected list item
+    var sql = 'INSERT INTO Contacts (roomNo, reserveTime, name, phone, email) VALUES (?, ?, ?, ?, ?)';
 
-	var tbClients = localStorage.getItem("tbClients");//Retrieve the stored data
-
-	tbClients = JSON.parse(tbClients); //Converts string to object
-
-	if(tbClients == null) //If there is no data, initialize an empty array
-		tbClients = [];
-
-	function Add(){
-		var client = JSON.stringify({
-			RoomNo   : $("#txtRoomNo").val(),
-			ReserveTime   : $("#txtReserveTime").val(),
-			Name  : $("#txtName").val(),
-			Phone : $("#txtContact").val(),
-			Email : $("#txtEmail").val()
-		});
-		tbClients.push(client);
-		localStorage.setItem("tbClients", JSON.stringify(tbClients));
-		alert("Reservation added!");
-		return true;
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [roomNo, reserveTime, name, phone, email], showRecordsAndResetForm, handleErrors);
+            //transaction.executeSql(sql, [name, phone], showRecords, handleErrors);
+            console.debug('executeSql: ' + sql);
+			alert('Added Reservation!');
+        }
+    );
 	}
+
+	function deleteRecord(id) {
+    console.debug('called deleteRecord()');
+
+    var sql = 'DELETE FROM Contacts WHERE id=?';
+
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [id], showRecords, handleErrors);
+            console.debug('executeSql: ' + sql);
+            alert('Delete Sucessfully');
+        }
+    );
+
+    resetForm();
+	}
+
+	function updateRecord() {
+    console.debug('called updateRecord()');
 	
-	function Edit(){
-		tbClients[selected_index] = JSON.stringify({
-				RoomNo   : $("#txtRoomNo").val(),
-				ReserveTime   : $("#txtReserveTime").val(),
-				Name  : $("#txtName").val(),
-				Phone : $("#txtContact").val(),
-				Email : $("#txtEmail").val()
-			});//Alter the selected item on the table
-		localStorage.setItem("tbClients", JSON.stringify(tbClients));
-		alert("Reservation updated!")
-		operation = "A"; //Return to default value
-		return true;
+	var roomNo = $('#roomNo').val();
+	var reserveTime = $('#reserveTime').val();
+    var name = $('#name').val();
+    var phone = $('#phone').val();
+	var email = $('#email').val();
+    var id = $("#id").val();
+
+    var sql = 'UPDATE Contacts SET roomNo=?, reserveTime=?, name=?, phone=?, email=? WHERE id=?';
+
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [roomNo, reserveTime, name, phone, email, id], showRecordsAndResetForm, handleErrors);
+            console.debug('executeSql: ' + sql);
+        }
+    );
 	}
 
-	function Delete(){
-		if(confirm("Are you sure you want to delete reservation?")){
-			tbClients.splice(selected_index, 1);
-			localStorage.setItem("tbClients", JSON.stringify(tbClients));
-			alert("Deleted reservation!");
-		}
+	function dropTable() {
+    console.debug('called dropTable()');
+
+    var sql = 'DROP TABLE Contacts';
+
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [], showRecords, handleErrors);
+        }
+    );
+
+    resetForm();
+
+    initDatabase();
 	}
 
-	function List(){		
-		$("#tblList").html("");
-		$("#tblList").html(
-			"<thead>"+
-			"	<tr>"+
-			"	<th></th>"+
-			"	<th>Rooms</th>"+
-			"	<th>ReserveTime</th>"+
-			"	<th>Name</th>"+
-			"	<th>Email</th>"+
-			"	</tr>"+
-			"</thead>"+
-			"<tbody>"+
-			"</tbody>"
-			);
-		for(var i in tbClients){
-			var cli = JSON.parse(tbClients[i]);
-		  	$("#tblList tbody").append("<tr>"+
-									 	 "	<td><img src= 'img/edit.png' alt='Edit"+i+"' class='btnEdit'/><img src= 'img/delete.png' alt='Delete"+i+"' class='btnDelete'/></td>" + 
-										 "	<td>"+cli.RoomNo+"</td>" + 
-										"	<td>"+cli.ReserveTime+"</td>" + 
-										 "	<td>"+cli.Name+"</td>" + 
-										 "	<td>"+cli.Email+"</td>" + 
-		  								 "</tr>");
-		}
+	function loadRecord(i) {
+    console.debug('called loadRecord()');
+
+    var item = dataset.item(i);
+	
+	$('#roomNo').val(item['roomNo']);
+	$('#reserveTime').val(item['reserveTime']);
+    $('#name').val(item['name']);
+    $('#phone').val(item['phone']);
+	$('#email').val(item['email']);
+    $('#id').val(item['id']);
 	}
 
-	$("#frmCadastre").bind("submit",function(){		
-		if(operation == "A")
-			return Add();
-		else
-			return Edit();
-	});
+	function resetForm() {
+    console.debug('called resetForm()');
+	
+	$('#roomNo').val('');
+	$('#reserveTime').val('');
+    $('#name').val('');
+    $('#phone').val('');
+	$('#email').val('');
+    $('#id').val('');
+	}
 
-	List();
+	function showRecordsAndResetForm() {
+    console.debug('called showRecordsAndResetForm()');
 
-	$(".btnEdit").bind("click", function(){
+    resetForm();
+    showRecords()
+	}
 
-		operation = "E";
-		selected_index = parseInt($(this).attr("alt").replace("Edit", ""));
-		
-		var cli = JSON.parse(tbClients[selected_index]);
-		$("#txtRoomNo").val(cli.RoomNo);
-		$("#txtReserveTime").val(cli.ReserveTime);
-		$("#txtName").val(cli.Name);
-		$("txtContact").val(cli.Contact);
-		$("#txtEmail").val(cli.Email);
-		$("#txtRoomNo").attr("readonly","readonly");
-		$("#txtName").focus();
-	});
+	function handleErrors(transaction, error) {
+    console.debug('called handleErrors()');
+    console.error('error ' + error.message);
 
-	$(".btnDelete").bind("click", function(){
-		selected_index = parseInt($(this).attr("alt").replace("Delete", ""));
-		Delete();
-		List();
-	});
+    alert(error.message);
+    return true;
+	}
+
+	function showRecords() {
+    console.debug('called showRecords()');
+
+    var sql = "SELECT * FROM Contacts";
+
+    db.transaction(
+        function (transaction) {
+            transaction.executeSql(sql, [], renderRecords, handleErrors);
+        }
+    );
+	}
+
+	function renderRecords(transaction, results) {
+    console.debug('called renderRecords()');
+
+    html = '';
+    $('#results').html('');
+
+    dataset = results.rows;
+
+    if (dataset.length > 0) {
+        html = html + '<br/><br/>';
+
+        html = html + '<table class="table table-bordered">';
+        html = html + '  <caption></caption>';
+        html = html + '  <thead>';
+        html = html + '    <tr>';
+        html = html + '      <th class="span1">Reservation</td>';
+		html = html + '      <th>Room</td>';
+		html = html + '      <th>Time</td>';
+        html = html + '      <th>Name</td>';
+        html = html + '      <th>Contact</td>';
+        html = html + '      <th class="span1"></td>';
+        html = html + '    </tr>';
+        html = html + '  </thead>';
+
+        html = html + '  <tbody>';
+
+        for (var i = 0, item = null; i < dataset.length; i++) {
+            item = dataset.item(i);
+
+            html = html + '    <tr>';
+            html = html + '      <td>' + item['id'] + '</td>';
+			html = html + '      <td>' + item['roomNo'] + '</td>';
+			html = html + '      <td>' + item['reserveTime'] + '</td>';
+            html = html + '      <td>' + item['name'] + '</td>';
+            html = html + '      <td>' + item['phone'] + '</td>';
+            html = html + '      <td>';
+            html = html + '        <button type="button" class="btn btn-primary btn-mini" onClick="loadRecord(' + i + ');">edit</button>';
+            html = html + '        <button type"button" class="btn btn-danger btn-mini" onClick="deleteRecord(' + item['id'] + ');">delete</button>';
+            html = html + '      </td>';
+            html = html + '    </tr>';
+        }
+
+        html = html + '  </tbody>';
+        html = html + '</table>';
+
+        $('#results').append(html);
+    }
+	}
+
+	function updateCacheContent(event) {
+    console.debug('called updateCacheContent()');
+    window.applicationCache.swapCache();
+	}
+
+	$(document).ready(function () {
+    window.applicationCache.addEventListener('updateready', updateCacheContent, false);
+
+    initDatabase();
 });
 	</script>
 	
@@ -131,18 +249,18 @@
 		</div>
 
     <div class="container">
-	<form id="frmCadastre">
+	<form>
 	<ul data-role="listview" data-inset="true">
 	
 			<li><center><img src="img/rooms/01.jpg" height="200px" width="200px"></center></li>
 			<li>
-				<label for="txtRoomNo" class="select">Room Number</label>
-				<input name="roomnumber" id="roomnumber" placeholder="" value="01" type="text" readOnly="true"/>
+				<label for="roomNo" class="select">Room Number</label>
+				<input name="RoomNo" id="roomNo" placeholder="" value="01" type="text" readOnly="true"/>
 			</li>
 
 			<li>
-  				<label for="reservetime" class="select">ReserveTime:</label>
-           			 <select name="ReserveTime" id="txtReserveTime">
+  				<label for="reserveTime" class="select">ReserveTime:</label>
+           			 <select name="ReserveTime" id="reserveTime">
                 			<option value="8 Hours">8 Hours</option>
 							<option value="12 Hours">12 Hours</option>
 							<option value="24 Hours">24 Hours</option>
@@ -151,28 +269,29 @@
 
 	<!-- end -->
         <li data-role="fieldcontain">
-            <label for="txtName">Full Name:</label>
-            <input type="text" name="fname" id="txtName" value="" maxlength="50" data-clear-btn="true"required/>
+            <label for="name">Full Name:</label>
+            <input type="text" name="fname" id="name" value="" maxlength="50" data-clear-btn="true" required/>
         </li>
         
         <!-- <li data-role="fieldcontain">
             <label for="address">Address:</label>
             <input type="text" name="address" id="address" value="" maxlength="75" data-clear-btn="true"required/>
         </li> -->
-        
+
+        <li data-role="fieldcontain">
+            <label for="phone">Contact No:</label>
+            <input type="text" name="contact" id="phone" value="" maxlength="15" data-clear-btn="true" pattern="[0-9]*" required/>
+        </li>
+		
        <li data-role="fieldcontain">
-     	 	<label for="txtEmail">Email: </label>
-    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="txtEmail" value=""required/>
+     	 	<label for="email">Email: </label>
+    		<input type="email" data-clear-btn="false" name="email-1" maxlength="30" id="email" value="" required/>
        </li>
        
-         <li data-role="fieldcontain">
-            <label for="txtContact">Contact No:</label>
-            <input type="text" name="contact" id="txtContact" value="" maxlength="15" data-clear-btn="true" pattern="[0-9]*" required/>
-        </li>
-  
-
-         <div class="ui-block-a"><center><input type="submit" value="Add" id="btnSave"/><a href="#pagetwo"></center></div>
-     
+       
+			<div>
+			<button type="submit" onClick="insertRecord()">Add</button>
+			</div>
     </ul>
 </form>
 	

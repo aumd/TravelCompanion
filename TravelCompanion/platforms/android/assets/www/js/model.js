@@ -1,14 +1,14 @@
 var db;
-var dataset;
+	var dataset;
 
-function initDatabase() {
+	function initDatabase() {
     console.debug('called initDatabase()');
 
     try {
         if (!window.openDatabase) {
             alert('not supported');
         } else {
-            var shortName = 'MyDatabase';
+            var shortName = 'HotelDatabase';
             var version = '1.0';
             var displayName = 'My Test Database Example';
             var maxSizeInBytes = 65536;
@@ -24,12 +24,12 @@ function initDatabase() {
         }
         return;
     }
-}
+	}
 
-function createTableIfNotExists() {
+	function createTableIfNotExists() {
     console.debug('called createTableIfNotExists()');
 
-    var sql = "CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, phone TEXT)";
+    var sql = "CREATE TABLE IF NOT EXISTS Contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, roomNo TEXT, reserveTime TEXT, name TEXT, phone TEXT, email TEXT)";
 
     db.transaction(
         function (transaction) {
@@ -37,26 +37,30 @@ function createTableIfNotExists() {
             console.debug('executeSql: ' + sql);
         }
     );
-}
+	}
 
-function insertRecord() {
+	function insertRecord() {
     console.debug('called insertRecord()');
-
+	
+	var roomNo = $('#roomNo').val();
+	var reserveTime = $('#reserveTime').val();
     var name = $('#name').val();
     var phone = $('#phone').val();
+	var email = $('#email').val();
 
-    var sql = 'INSERT INTO Contacts (name, phone) VALUES (?, ?)';
+    var sql = 'INSERT INTO Contacts (roomNo, reserveTime, name, phone, email) VALUES (?, ?, ?, ?, ?)';
 
     db.transaction(
         function (transaction) {
-            transaction.executeSql(sql, [name, phone], showRecordsAndResetForm, handleErrors);
+            transaction.executeSql(sql, [roomNo, reserveTime, name, phone, email], showRecordsAndResetForm, handleErrors);
             //transaction.executeSql(sql, [name, phone], showRecords, handleErrors);
             console.debug('executeSql: ' + sql);
+			alert('Added Reservation!');
         }
     );
-}
+	}
 
-function deleteRecord(id) {
+	function deleteRecord(id) {
     console.debug('called deleteRecord()');
 
     var sql = 'DELETE FROM Contacts WHERE id=?';
@@ -70,26 +74,29 @@ function deleteRecord(id) {
     );
 
     resetForm();
-}
+	}
 
-function updateRecord() {
+	function updateRecord() {
     console.debug('called updateRecord()');
-
+	
+	var roomNo = $('#roomNo').val();
+	var reserveTime = $('#reserveTime').val();
     var name = $('#name').val();
     var phone = $('#phone').val();
+	var email = $('#email').val();
     var id = $("#id").val();
 
-    var sql = 'UPDATE Contacts SET name=?, phone=? WHERE id=?';
+    var sql = 'UPDATE Contacts SET roomNo=?, reserveTime=?, name=?, phone=?, email=? WHERE id=?';
 
     db.transaction(
         function (transaction) {
-            transaction.executeSql(sql, [name, phone, id], showRecordsAndResetForm, handleErrors);
+            transaction.executeSql(sql, [roomNo, reserveTime, name, phone, email, id], showRecordsAndResetForm, handleErrors);
             console.debug('executeSql: ' + sql);
         }
     );
-}
+	}
 
-function dropTable() {
+	function dropTable() {
     console.debug('called dropTable()');
 
     var sql = 'DROP TABLE Contacts';
@@ -103,42 +110,48 @@ function dropTable() {
     resetForm();
 
     initDatabase();
-}
+	}
 
-function loadRecord(i) {
+	function loadRecord(i) {
     console.debug('called loadRecord()');
 
     var item = dataset.item(i);
-
+	
+	$('#roomNo').val(item['roomNo']);
+	$('#reserveTime').val(item['reserveTime']);
     $('#name').val(item['name']);
     $('#phone').val(item['phone']);
+	$('#email').val(item['email']);
     $('#id').val(item['id']);
-}
+	}
 
-function resetForm() {
+	function resetForm() {
     console.debug('called resetForm()');
-
+	
+	$('#roomNo').val('');
+	$('#reserveTime').val('');
     $('#name').val('');
     $('#phone').val('');
+	$('#email').val('');
     $('#id').val('');
-}
+	}
 
-function showRecordsAndResetForm() {
+	function showRecordsAndResetForm() {
     console.debug('called showRecordsAndResetForm()');
 
     resetForm();
     showRecords()
-}
+	}
 
-function handleErrors(transaction, error) {
+	function handleErrors(transaction, error) {
     console.debug('called handleErrors()');
     console.error('error ' + error.message);
 
     alert(error.message);
     return true;
-}
+	}
 
-function showRecords() {
+	function showRecords() {
     console.debug('called showRecords()');
 
     var sql = "SELECT * FROM Contacts";
@@ -148,9 +161,9 @@ function showRecords() {
             transaction.executeSql(sql, [], renderRecords, handleErrors);
         }
     );
-}
+	}
 
-function renderRecords(transaction, results) {
+	function renderRecords(transaction, results) {
     console.debug('called renderRecords()');
 
     html = '';
@@ -166,6 +179,8 @@ function renderRecords(transaction, results) {
         html = html + '  <thead>';
         html = html + '    <tr>';
         html = html + '      <th class="span1">Reservation</td>';
+		html = html + '      <th>Room</td>';
+		html = html + '      <th>Time</td>';
         html = html + '      <th>Name</td>';
         html = html + '      <th>Contact</td>';
         html = html + '      <th class="span1"></td>';
@@ -179,6 +194,8 @@ function renderRecords(transaction, results) {
 
             html = html + '    <tr>';
             html = html + '      <td>' + item['id'] + '</td>';
+			html = html + '      <td>' + item['roomNo'] + '</td>';
+			html = html + '      <td>' + item['reserveTime'] + '</td>';
             html = html + '      <td>' + item['name'] + '</td>';
             html = html + '      <td>' + item['phone'] + '</td>';
             html = html + '      <td>';
@@ -193,14 +210,14 @@ function renderRecords(transaction, results) {
 
         $('#results').append(html);
     }
-}
+	}
 
-function updateCacheContent(event) {
+	function updateCacheContent(event) {
     console.debug('called updateCacheContent()');
     window.applicationCache.swapCache();
-}
+	}
 
-$(document).ready(function () {
+	$(document).ready(function () {
     window.applicationCache.addEventListener('updateready', updateCacheContent, false);
 
     initDatabase();
