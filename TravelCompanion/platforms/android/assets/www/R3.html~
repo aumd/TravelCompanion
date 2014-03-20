@@ -1,13 +1,13 @@
 <html>
 
 <head>
-    <title>Room 02</title>
+    <title>Room 03</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- jquery mobile -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
     <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>z
 	
 	<script src="js/fastclick.js"></script>
 	<script src="js/model.js"></script>
@@ -21,33 +21,25 @@
 		<a href="RoomList.html" data-role="button" data-icon="back" onclick="doSomething(); return false" rel="external">Back</a>
 		</div>
 
-      <div class="container">
+     <div class="container">
 	<form>
 	<ul data-role="listview" data-inset="true">
 	
-			<li><center><img src="img/rooms/02.jpg" height="200px" width="200px"></center></li>
+			<li><center><img src="img/rooms/03.jpg" height="200px" width="200px"></center></li>
 			<li>
 				<label for="roomNo" class="select">Room Number</label>
-				<input name="RoomNo" id="roomNo" placeholder="" value="02" type="text" readOnly="true"/>
+				<input name="RoomNo" id="roomNo" placeholder="" value="03" type="text" readOnly="true"/>
 			</li>
 
 			<li>
-
-			<label for="reservetime" class="select">ReserveTime:</label>
-			<select name="note_utilisateur" id="note_utilisateur" data-native-menu="false" data-theme="c" >
-		   		<option value="one" class="one"> 8 Hours </option>
-		  	 	<option value="two" class="two">12 Hours </option>
-		  	 	<option value="three" class="three">24 Hours </option>
-			</select>
-
-
- 		<!-- <select name="ReserveTime" id="txtReserveTime">
+  				<label for="reserveTime" class="select">ReserveTime:</label>
+           			 <select name="ReserveTime" id="reserveTime">
                 			<option value="8 Hours">8 Hours</option>
 							<option value="12 Hours">12 Hours</option>
 							<option value="24 Hours">24 Hours</option>
-		-->
+           			 </select>
 			</li>
-			
+
 	<!-- end -->
         <li data-role="fieldcontain">
             <label for="name">Full Name:</label>

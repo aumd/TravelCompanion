@@ -249,8 +249,6 @@
 		</div>
 
     <div class="container">
-	
-	<div data-theme="a">
 	<form>
 	<ul data-role="listview" data-inset="true">
 	
@@ -301,12 +299,11 @@
        
        
 			<div>
-			<button type="button" onClick="insertRecord()">Add</button>
+			<a href="" data-role="button" id="btnSave" onclick="doSomething(); return false" rel="external">Add</a>
 			</div>
     </ul>
-	</form>
+</form>
 	
-	</div>
     </div> <!-- /container -->
 
 
