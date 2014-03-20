@@ -218,7 +218,6 @@
             html = html + '      <td>' + item['phone'] + '</td>';
             html = html + '      <td>';
             html = html + '        <button type="button" class="btn btn-primary btn-mini" onClick="loadRecord(' + i + ');">edit</button>';
-            html = html + '        <button type"button" class="btn btn-danger btn-mini" onClick="deleteRecord(' + item['id'] + ');">delete</button>';
             html = html + '      </td>';
             html = html + '    </tr>';
         }
@@ -258,13 +257,12 @@
 	</div>
 
     <div class="container">
-	
-	 <form>
+
       <form>
 	<div class="row">
       <div class="span3">
         <label for="RoomNo">Room Number</label>
-        <input type="text" class="span3" id="roomNo">
+        <input type="text" class="span3" id="roomNo" readOnly="true">
       </div>
     </div>
 	
@@ -298,10 +296,14 @@
 		
 	<div id="results"></div>
 	
-	 <button type="button" class="btn" onClick="updateRecord()">Update</button>
-     <button type="button" class="btn btn-danger" onClick="dropTable()">Cancel All</button>
+	<input type="hidden" id="id"/>
+	
+	<div>
+	<button type="button" class="btn" onClick="updateRecord()">Update</button>
+    <button type="button" class="btn btn-danger" onClick="dropTable()">Delete</button>
     </div>
-
+	</form>
+	
 	</div>
 </body>
 </html>

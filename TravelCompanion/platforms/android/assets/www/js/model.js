@@ -1,5 +1,5 @@
 var db;
-	var dataset;
+var dataset;
 
 	function initDatabase() {
     console.debug('called initDatabase()');
