@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Room 02</title>
+    <title>Room 05</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- jquery mobile -->
@@ -25,29 +25,21 @@
 	<form>
 	<ul data-role="listview" data-inset="true">
 	
-			<li><center><img src="img/rooms/02.jpg" height="200px" width="200px"></center></li>
+			<li><center><img src="img/rooms/05.jpg" height="200px" width="200px"></center></li>
 			<li>
 				<label for="roomNo" class="select">Room Number</label>
-				<input name="RoomNo" id="roomNo" placeholder="" value="02" type="text" readOnly="true"/>
+				<input name="RoomNo" id="roomNo" placeholder="" value="05" type="text" readOnly="true"/>
 			</li>
 
 			<li>
-
-			<label for="reservetime" class="select">ReserveTime:</label>
-			<select name="note_utilisateur" id="note_utilisateur" data-native-menu="false" data-theme="c" >
-		   		<option value="one" class="one"> 8 Hours </option>
-		  	 	<option value="two" class="two">12 Hours </option>
-		  	 	<option value="three" class="three">24 Hours </option>
-			</select>
-
-
- 		<!-- <select name="ReserveTime" id="txtReserveTime">
+  				<label for="reserveTime" class="select">ReserveTime:</label>
+           			 <select name="ReserveTime" id="reserveTime">
                 			<option value="8 Hours">8 Hours</option>
 							<option value="12 Hours">12 Hours</option>
 							<option value="24 Hours">24 Hours</option>
-		-->
+           			 </select>
 			</li>
-			
+
 	<!-- end -->
         <li data-role="fieldcontain">
             <label for="name">Full Name:</label>
