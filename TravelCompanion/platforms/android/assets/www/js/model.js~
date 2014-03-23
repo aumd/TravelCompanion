@@ -81,10 +81,10 @@ var dataset;
 	
 	var roomNo = $('#roomNo').val();
 	var reserveTime = $('#reserveTime').val();
-    	var name = $('#name').val();
-   	var phone = $('#phone').val();
+    var name = $('#name').val();
+    var phone = $('#phone').val();
 	var email = $('#email').val();
-   	var id = $("#id").val();
+    var id = $("#id").val();
 
     var sql = 'UPDATE Contacts SET roomNo=?, reserveTime=?, name=?, phone=?, email=? WHERE id=?';
 

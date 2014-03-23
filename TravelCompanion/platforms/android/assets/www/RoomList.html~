@@ -86,7 +86,7 @@
 				<h5>Room Type: Double Bedroom</h5>
 				<h5>Rent: 400 php</h5>
 				<!--<h5>Status: Available </h5> -->
-				<a href="R4.html" data-role="button" data-icon="add" onclick="doSomething(); return false" rel="external" data-theme="a">Reserve this room</a>
+				<a href="R1.html" data-role="button" data-icon="add" onclick="doSomething(); return false" rel="external" data-theme="a">Reserve this room</a>
 			</div>
 			
 			  <li><a href="#rm05" data-rel="popup"  data-position-to="window" data-transition="flow">
@@ -102,7 +102,7 @@
 				<h5>Room Type: Twin Bedroom</h5>
 				<h5>Rent: 500 php</h5>
 				<!--<h5>Status: Available </h5> -->
-				<a href="R5.html" data-role="button" data-icon="add" onclick="doSomething(); return false" rel="external" data-theme="a">Reserve this room</a>
+				<a href="R5.html" data-rel="dialog"  data-position-to="window" data-transition="flow" type="button" data-theme="a">Reserve</a>
 			</div>
 			
 			  <li><a href="#rm06" data-rel="popup"  data-position-to="window" data-transition="flow">
@@ -118,7 +118,7 @@
 				<h5>Room Type: Twin Bedroom</h5>
 				<h5>Rent: 500 php</h5>
 				<!-- <h5>Status: Available </h5> -->
-				<a href="R6.html" data-role="button" data-icon="add" onclick="doSomething(); return false" rel="external" data-theme="a">Reserve this room</a>
+				<a href="R6.html" data-rel="dialog"  data-position-to="window" data-transition="flow" type="button" data-theme="a">Reserve</a>
 			</div>
 			
 			</ul>
